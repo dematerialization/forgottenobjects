@@ -1,7 +1,6 @@
 <html>
 	<head>
 		<title>Forgotten objects/</title>
-		<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 		<style type="text/css">
 /*
  * This file is NOT needed in order to use skrollr.
@@ -15,6 +14,11 @@ html, body {
 	padding:0;
 	margin:0;
 	overflow-x:hidden;
+}
+
+@font-face {
+	font-family: neutraface;
+	src: url('Neutra.otf');
 }
 
 .skrollable {
@@ -51,9 +55,17 @@ html, body {
 }
 
 			html, body { width: 100%; height: 100%; margin: 0 }
+			.arrow {
+				position: fixed;
+				bottom: 13px;
+				left: 50%;
+				transform: translateX(-50%);
+				z-index: 50;
+				width: 80px;
+			}
 			.typo {
-				font-family: Montserrat;
-				font-size: 3vw;
+				font-family: neutraface;
+				font-size: 5vw;
 				color: #0A0AB3;
 				line-height: 1.5em;
 				font-weight: 600;
@@ -86,7 +98,7 @@ html, body {
 			}
 			.g4 > .typo {
 				width: 40%;
-				padding: 35% 3% 0 3%;
+				padding: 3% 3% 0 3%;
 			}
 			.g5 {
 				background-image: url('gify/a.gif');
@@ -102,10 +114,13 @@ html, body {
 				background-image: url('gify/d.gif');
 				z-index: 12;
 			}
+			
 		</style>
 	</head>
 	<body>
 
+		<img class="arrow" src="arrow.svg" data-10400="opacity:1" data-11200="opacity:0">
+	
 
 		<div data-1000="top: 0" data-1800="top: -1200px" class="giff g1"></div>
 		<div class="giff g2" data-1000="background-position: 0 -800%;" data-3400="background-position: 0 0;"></div>
