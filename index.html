@@ -60,7 +60,7 @@ html, body {
 				bottom: 13px;
 				left: 50%;
 				transform: translateX(-50%);
-				z-index: 50;
+				z-index: 150;
 				width: 80px;
 			}
 			.typo {
@@ -79,6 +79,8 @@ html, body {
 			.g1 {
 				background-image: url('gify/first.png');
 				z-index: 10;
+				position: absolute;
+				top: 0;
 			}
 
 			.g2 {
@@ -116,13 +118,126 @@ html, body {
 				z-index: 12;
 			}
 
-			
+@keyframes slidy {
+0% { left: 0%; }
+42% { left: 0%; }
+58% { left: -100%; }
+90% { left: -100%; }
+}
+
+
+div#slider { overflow: hidden;
+				width: 100vw;
+				position: absolute;
+				top: 0;
+				height: 100vh;
+ }
+div#slider > div > div { width: 50%;
+				background-size: cover !important;
+				background-repeat: no-repeat !important;
+	float: left; }
+
+div#slider > div {
+  position: relative;
+  width: 200%;
+  margin: 0;
+  height: 100vh;
+  z-index: 7;
+  left: 0;
+  text-align: left;
+  font-size: 0;
+  animation: 6s slidy infinite;
+  -webkit-animation: 6s slidy infinite;
+}
+
+.s1, .s2 {
+	background-image: url('gify/pane-01.jpg');
+				width: 100vw;
+				height: 100vh;
+}
+
+.s2 {
+	background-image: url('gify/pane-02.jpg');
+}
+
+#alal {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	z-index: -1;
+	background: #0A0AB3;
+	opacity: 0;
+	-webkit-transition: all .3s;
+	transition: all .3s;
+}
+
+#alal.show {
+	opacity: 1;
+	z-index: 9999;
+}
+
+#alal .typo {
+	color: white;
+	margin: 10px 200px 0 100px;
+}
+#xxxx {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	width: 35px;
+	cursor: pointer;
+	height: 35px;
+}
+
+
+#xxxx::before,
+#xxxx::after {
+    width: 3px;
+    display: block;
+    position: absolute;
+    height: 50px;
+    top: 0;
+    transform: rotate(45deg);
+    background: white;
+    content: "";
+}
+#xxxx::after {
+    transform: rotate(-45deg);
+}
+
+
+
 		</style>
 	</head>
 	<body>
 
+		<div href="#" id="alal">
+			<div class="typo">
+				"The woman of genius
+
+				does not exist. If she
+
+				does, she's a man."
+			</div>
+			<div id="xxxx"></div>
+		</div>
+
 		<img class="arrow" src="arrow.svg" data-10400="opacity:1" data-11200="opacity:0">
-		<div data-1000="top: 0" data-1800="top: -1200px" class="giff g1"></div>
+		<div data-1000="top: 0" data-1800="top: -1200px" class="giff">
+
+		<a href="#" id="lala" class="g1 giff"></a>
+
+
+<div id="slider">
+<div>
+<div class="s1"></div>
+<div class="s2"></div>
+</div>
+</div>
+
+		</div>
 		<div class="giff g2" data-1000="background-position: 0 -800%;" data-3400="background-position: 0 0;"></div>
 
 		<div class="giff g3 typo" data-2200="top: 1200px;" data-3400="top: 200px;">"So long as a woman
@@ -154,6 +269,22 @@ anything."</div>
 			(function() {
 				var s = skrollr.init();
 			})();
+
+			elementCl = document.getElementById('lala');
+			elementSh = document.getElementById('alal');
+			elementX = document.getElementById('xxxx');
+console.log(elementCl);
+			elementCl.onclick = showEl;
+			elementX.onclick = hideEl;
+
+			function showEl() {
+				console.log('dsaf');
+				elementSh.className = "show";
+			}
+
+			function hideEl() {
+				elementSh.className = "";
+			}
 
 	    </script>
 	</body>
